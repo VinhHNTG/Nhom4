@@ -27,21 +27,58 @@ public class TrangChuNhanVien extends javax.swing.JFrame {
     private void initComponents() {
 
         PanelChonChucNang = new javax.swing.JPanel();
+        btnDanhSachSP = new javax.swing.JButton();
+        btnBanHang = new javax.swing.JButton();
+        btnDangXuat = new javax.swing.JButton();
         PanelChucNang = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         PanelChonChucNang.setBorder(javax.swing.BorderFactory.createTitledBorder("Chọn Chức Năng"));
 
+        btnDanhSachSP.setText("Danh Sách Sản Phẩm");
+        btnDanhSachSP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDanhSachSPActionPerformed(evt);
+            }
+        });
+
+        btnBanHang.setText("Bán Hàng");
+        btnBanHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBanHangActionPerformed(evt);
+            }
+        });
+
+        btnDangXuat.setText("Đăng Xuất");
+        btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangXuatActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelChonChucNangLayout = new javax.swing.GroupLayout(PanelChonChucNang);
         PanelChonChucNang.setLayout(PanelChonChucNangLayout);
         PanelChonChucNangLayout.setHorizontalGroup(
             PanelChonChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 125, Short.MAX_VALUE)
+            .addGroup(PanelChonChucNangLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelChonChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnDanhSachSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBanHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addComponent(btnDangXuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         PanelChonChucNangLayout.setVerticalGroup(
             PanelChonChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(PanelChonChucNangLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnDanhSachSP, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBanHang, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         PanelChucNang.setBorder(javax.swing.BorderFactory.createTitledBorder("Chức Năng"));
@@ -50,7 +87,7 @@ public class TrangChuNhanVien extends javax.swing.JFrame {
         PanelChucNang.setLayout(PanelChucNangLayout);
         PanelChucNangLayout.setHorizontalGroup(
             PanelChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 679, Short.MAX_VALUE)
+            .addGap(0, 688, Short.MAX_VALUE)
         );
         PanelChucNangLayout.setVerticalGroup(
             PanelChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,6 +117,18 @@ public class TrangChuNhanVien extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnDanhSachSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDanhSachSPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDanhSachSPActionPerformed
+
+    private void btnBanHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBanHangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBanHangActionPerformed
+
+    private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDangXuatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,5 +169,8 @@ public class TrangChuNhanVien extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelChonChucNang;
     private javax.swing.JPanel PanelChucNang;
+    private javax.swing.JButton btnBanHang;
+    private javax.swing.JButton btnDangXuat;
+    private javax.swing.JButton btnDanhSachSP;
     // End of variables declaration//GEN-END:variables
 }

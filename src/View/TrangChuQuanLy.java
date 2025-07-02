@@ -4,6 +4,8 @@
  */
 package View;
 
+import java.awt.BorderLayout;
+
 /**
  *
  * @author ADMIN
@@ -27,34 +29,84 @@ public class TrangChuQuanLy extends javax.swing.JFrame {
     private void initComponents() {
 
         PanelChonChucNang = new javax.swing.JPanel();
-        PanelChucNang = new javax.swing.JPanel();
+        btnQLHD = new javax.swing.JButton();
+        btnQLNV = new javax.swing.JButton();
+        btnQLKM = new javax.swing.JButton();
+        btnKH = new javax.swing.JButton();
+        btnQLSP = new javax.swing.JButton();
+        btnThongKe = new javax.swing.JButton();
+        btnDangXuat = new javax.swing.JButton();
+        jPanelCN = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         PanelChonChucNang.setBorder(javax.swing.BorderFactory.createTitledBorder("Chọn Chức Năng"));
 
+        btnQLHD.setText("Quản Lý Hóa Đơn");
+
+        btnQLNV.setText("Quản Lý Nhân Viên ");
+        btnQLNV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQLNVActionPerformed(evt);
+            }
+        });
+
+        btnQLKM.setText("Quản Lý Khuyến Mãi");
+
+        btnKH.setText("Quản Lý Khách Hàng");
+
+        btnQLSP.setText("Quản Lý Sản Phẩm");
+
+        btnThongKe.setText("Thống Kế");
+
+        btnDangXuat.setText("Đăng Xuất");
+
         javax.swing.GroupLayout PanelChonChucNangLayout = new javax.swing.GroupLayout(PanelChonChucNang);
         PanelChonChucNang.setLayout(PanelChonChucNangLayout);
         PanelChonChucNangLayout.setHorizontalGroup(
             PanelChonChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 125, Short.MAX_VALUE)
+            .addGroup(PanelChonChucNangLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PanelChonChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnQLHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnQLNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnQLKM, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnKH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnQLSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDangXuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         PanelChonChucNangLayout.setVerticalGroup(
             PanelChonChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelChonChucNangLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnQLHD, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnQLNV, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnQLKM, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnKH, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnQLSP, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addComponent(btnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanelCN.setBorder(javax.swing.BorderFactory.createTitledBorder("Chức Năng"));
+
+        javax.swing.GroupLayout jPanelCNLayout = new javax.swing.GroupLayout(jPanelCN);
+        jPanelCN.setLayout(jPanelCNLayout);
+        jPanelCNLayout.setHorizontalGroup(
+            jPanelCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 680, Short.MAX_VALUE)
+        );
+        jPanelCNLayout.setVerticalGroup(
+            jPanelCNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        PanelChucNang.setBorder(javax.swing.BorderFactory.createTitledBorder("Chức Năng"));
-
-        javax.swing.GroupLayout PanelChucNangLayout = new javax.swing.GroupLayout(PanelChucNang);
-        PanelChucNang.setLayout(PanelChucNangLayout);
-        PanelChucNangLayout.setHorizontalGroup(
-            PanelChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 673, Short.MAX_VALUE)
-        );
-        PanelChucNangLayout.setVerticalGroup(
-            PanelChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 481, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -65,21 +117,34 @@ public class TrangChuQuanLy extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(PanelChonChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelCN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(PanelChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PanelChonChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PanelChonChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelCN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnQLNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLNVActionPerformed
+        // TODO add your handling code here:
+        QLNV p1 = new QLNV();
+        p1.setSize(584, 597); // Hoặc bạn có thể bỏ qua setSize hoàn toàn
+        p1.setLocation(0, 0);
+
+        jPanelCN.removeAll();
+        jPanelCN.setLayout(new BorderLayout());
+        jPanelCN.add(p1, BorderLayout.CENTER);
+        jPanelCN.revalidate();
+        jPanelCN.repaint();
+    }//GEN-LAST:event_btnQLNVActionPerformed
 
     /**
      * @param args the command line arguments
@@ -118,6 +183,13 @@ public class TrangChuQuanLy extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelChonChucNang;
-    private javax.swing.JPanel PanelChucNang;
+    private javax.swing.JButton btnDangXuat;
+    private javax.swing.JButton btnKH;
+    private javax.swing.JButton btnQLHD;
+    private javax.swing.JButton btnQLKM;
+    private javax.swing.JButton btnQLNV;
+    private javax.swing.JButton btnQLSP;
+    private javax.swing.JButton btnThongKe;
+    private javax.swing.JPanel jPanelCN;
     // End of variables declaration//GEN-END:variables
 }
