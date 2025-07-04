@@ -4,6 +4,8 @@
  */
 package View;
 
+import java.awt.BorderLayout;
+
 /**
  *
  * @author ADMIN
@@ -120,6 +122,14 @@ public class TrangChuNhanVien extends javax.swing.JFrame {
 
     private void btnDanhSachSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDanhSachSPActionPerformed
         // TODO add your handling code here:
+                DSSP p2 = new DSSP(); // Không cần setSize và setLocation
+        p2 .setSize(1001, 641);
+        p2.setLocation(0,0);
+        PanelChucNang.removeAll();
+        PanelChucNang.setLayout(new BorderLayout()); // Bố trí tự co giãn theo khu vực
+        PanelChucNang.add(p2, BorderLayout.CENTER);  // p1 sẽ lấp đầy vùng trung tâm
+        PanelChucNang.revalidate();
+        PanelChucNang.repaint();
     }//GEN-LAST:event_btnDanhSachSPActionPerformed
 
     private void btnBanHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBanHangActionPerformed

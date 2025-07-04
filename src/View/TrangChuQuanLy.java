@@ -43,6 +43,11 @@ public class TrangChuQuanLy extends javax.swing.JFrame {
         PanelChonChucNang.setBorder(javax.swing.BorderFactory.createTitledBorder("Chọn Chức Năng"));
 
         btnQLHD.setText("Quản Lý Hóa Đơn");
+        btnQLHD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQLHDActionPerformed(evt);
+            }
+        });
 
         btnQLNV.setText("Quản Lý Nhân Viên ");
         btnQLNV.addActionListener(new java.awt.event.ActionListener() {
@@ -54,6 +59,11 @@ public class TrangChuQuanLy extends javax.swing.JFrame {
         btnQLKM.setText("Quản Lý Khuyến Mãi");
 
         btnKH.setText("Quản Lý Khách Hàng");
+        btnKH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKHActionPerformed(evt);
+            }
+        });
 
         btnQLSP.setText("Quản Lý Sản Phẩm");
 
@@ -135,16 +145,40 @@ public class TrangChuQuanLy extends javax.swing.JFrame {
 
     private void btnQLNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLNVActionPerformed
         // TODO add your handling code here:
-        QLNV p1 = new QLNV();
-        p1.setSize(584, 597); // Hoặc bạn có thể bỏ qua setSize hoàn toàn
-        p1.setLocation(0, 0);
-
+ 
+        QLNV p2 = new QLNV(); // Không cần setSize và setLocation
+        p2 .setSize(584, 597);
+        p2.setLocation(0,0);
         jPanelCN.removeAll();
-        jPanelCN.setLayout(new BorderLayout());
-        jPanelCN.add(p1, BorderLayout.CENTER);
+        jPanelCN.setLayout(new BorderLayout()); // Bố trí tự co giãn theo khu vực
+        jPanelCN.add(p2, BorderLayout.CENTER);  // p1 sẽ lấp đầy vùng trung tâm
         jPanelCN.revalidate();
         jPanelCN.repaint();
     }//GEN-LAST:event_btnQLNVActionPerformed
+
+    private void btnKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKHActionPerformed
+        // TODO add your handling code here:
+        QLKH p2 = new QLKH(); // Không cần setSize và setLocation
+        p2 .setSize(534, 537);
+        p2.setLocation(0,0);
+        jPanelCN.removeAll();
+        jPanelCN.setLayout(new BorderLayout()); // Bố trí tự co giãn theo khu vực
+        jPanelCN.add(p2, BorderLayout.CENTER);  // p1 sẽ lấp đầy vùng trung tâm
+        jPanelCN.revalidate();
+        jPanelCN.repaint();
+    }//GEN-LAST:event_btnKHActionPerformed
+
+    private void btnQLHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLHDActionPerformed
+        // TODO add your handling code here:
+              QLHD p2 = new QLHD(); // Không cần setSize và setLocation
+        p2 .setSize(487, 446);
+        p2.setLocation(0,0);
+        jPanelCN.removeAll();
+        jPanelCN.setLayout(new BorderLayout()); // Bố trí tự co giãn theo khu vực
+        jPanelCN.add(p2, BorderLayout.CENTER);  // p1 sẽ lấp đầy vùng trung tâm
+        jPanelCN.revalidate();
+        jPanelCN.repaint();
+    }//GEN-LAST:event_btnQLHDActionPerformed
 
     /**
      * @param args the command line arguments
