@@ -68,6 +68,11 @@ public class TrangChuQuanLy extends javax.swing.JFrame {
         btnQLSP.setText("Quản Lý Sản Phẩm");
 
         btnThongKe.setText("Thống Kế");
+        btnThongKe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThongKeActionPerformed(evt);
+            }
+        });
 
         btnDangXuat.setText("Đăng Xuất");
 
@@ -179,6 +184,18 @@ public class TrangChuQuanLy extends javax.swing.JFrame {
         jPanelCN.revalidate();
         jPanelCN.repaint();
     }//GEN-LAST:event_btnQLHDActionPerformed
+
+    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
+        // TODO add your handling code here:
+                      ThongKe p2 = new ThongKe(); // Không cần setSize và setLocation
+        p2 .setSize(744, 487);
+        p2.setLocation(0,0);
+        jPanelCN.removeAll();
+        jPanelCN.setLayout(new BorderLayout()); // Bố trí tự co giãn theo khu vực
+        jPanelCN.add(p2, BorderLayout.CENTER);  // p1 sẽ lấp đầy vùng trung tâm
+        jPanelCN.revalidate();
+        jPanelCN.repaint();
+    }//GEN-LAST:event_btnThongKeActionPerformed
 
     /**
      * @param args the command line arguments
