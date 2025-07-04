@@ -57,6 +57,11 @@ public class TrangChuQuanLy extends javax.swing.JFrame {
         });
 
         btnQLKM.setText("Quản Lý Khuyến Mãi");
+        btnQLKM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQLKMActionPerformed(evt);
+            }
+        });
 
         btnKH.setText("Quản Lý Khách Hàng");
         btnKH.addActionListener(new java.awt.event.ActionListener() {
@@ -66,6 +71,11 @@ public class TrangChuQuanLy extends javax.swing.JFrame {
         });
 
         btnQLSP.setText("Quản Lý Sản Phẩm");
+        btnQLSP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQLSPActionPerformed(evt);
+            }
+        });
 
         btnThongKe.setText("Thống Kế");
         btnThongKe.addActionListener(new java.awt.event.ActionListener() {
@@ -196,6 +206,30 @@ public class TrangChuQuanLy extends javax.swing.JFrame {
         jPanelCN.revalidate();
         jPanelCN.repaint();
     }//GEN-LAST:event_btnThongKeActionPerformed
+
+    private void btnQLSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLSPActionPerformed
+        // TODO add your handling code here:
+        QLSP p2 = new QLSP(); // Không cần setSize và setLocation
+        p2 .setSize(635, 676);
+        p2.setLocation(0,0);
+        jPanelCN.removeAll();
+        jPanelCN.setLayout(new BorderLayout()); // Bố trí tự co giãn theo khu vực
+        jPanelCN.add(p2, BorderLayout.CENTER);  // p1 sẽ lấp đầy vùng trung tâm
+        jPanelCN.revalidate();
+        jPanelCN.repaint();
+    }//GEN-LAST:event_btnQLSPActionPerformed
+
+    private void btnQLKMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLKMActionPerformed
+        // TODO add your handling code here:
+                QLKM p2 = new QLKM(); // Không cần setSize và setLocation
+        p2 .setSize(683, 543);
+        p2.setLocation(0,0);
+        jPanelCN.removeAll();
+        jPanelCN.setLayout(new BorderLayout()); // Bố trí tự co giãn theo khu vực
+        jPanelCN.add(p2, BorderLayout.CENTER);  // p1 sẽ lấp đầy vùng trung tâm
+        jPanelCN.revalidate();
+        jPanelCN.repaint();
+    }//GEN-LAST:event_btnQLKMActionPerformed
 
     /**
      * @param args the command line arguments

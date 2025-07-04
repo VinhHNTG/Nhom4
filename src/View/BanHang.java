@@ -53,6 +53,7 @@ public class BanHang extends javax.swing.JPanel {
         txtNgayDat = new javax.swing.JTextField();
         txtMaKH = new javax.swing.JTextField();
 
+        btnTaoHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/icons8-add-26.png"))); // NOI18N
         btnTaoHoaDon.setText("Tạo Hóa Đơn");
         btnTaoHoaDon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
