@@ -72,7 +72,19 @@ public class QLHDCT extends javax.swing.JPanel {
             return false;
         }
         return true;
-}
+    }
+
+    private ChiTietHoaDon getForm() {
+        int maCTHD = Integer.parseInt(txtMaCTHD.getText().trim());
+        int maHD = Integer.parseInt(txtmaHD.getText().trim());
+        int maSP = Integer.parseInt(txtMaSP.getText().trim());
+        double donGia = Double.parseDouble(txtDonGia.getText().trim());
+        String trangThai = rdoThanhToan.isSelected() ? "Đã thanh toán" : "Chưa thanh toán";
+
+        return new ChiTietHoaDon(maCTHD, maHD, maSP, donGia, trangThai);
+    }
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -321,14 +333,45 @@ public class QLHDCT extends javax.swing.JPanel {
 
     private void btnThemCTHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemCTHDActionPerformed
         // TODO add your handling code here:
+         if (validateForm()) {
+        ChiTietHoaDon cthd = getForm();
+        if (hdctDao.addHDCT(cthd) > 0) {
+            JOptionPane.showMessageDialog(this, "Thêm thành công.");
+            fillTable();
+        } else {
+            JOptionPane.showMessageDialog(this, "Thêm thất bại.");
+        }
+    }
     }//GEN-LAST:event_btnThemCTHDActionPerformed
 
     private void btnXóaCTHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXóaCTHDActionPerformed
         // TODO add your handling code here:
+         int confirm = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa?", "Xác nhận", JOptionPane.YES_NO_OPTION);
+    if (confirm == JOptionPane.YES_OPTION) {
+        int maCTHD = Integer.parseInt(txtMaCTHD.getText().trim());
+        ChiTietHoaDon cthd = new ChiTietHoaDon();
+        cthd.setMaCTHD(maCTHD);
+        
+        if (hdctDao.deleteHDCT(cthd) > 0) {
+            JOptionPane.showMessageDialog(this, "Xóa thành công.");
+            fillTable();
+        } else {
+            JOptionPane.showMessageDialog(this, "Xóa thất bại.");
+        }
+    }
     }//GEN-LAST:event_btnXóaCTHDActionPerformed
 
     private void btnSuaCTHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaCTHDActionPerformed
         // TODO add your handling code here:
+          if (validateForm()) {
+        ChiTietHoaDon cthd = getForm();
+        if (hdctDao.editHDCT(cthd) > 0) {
+            JOptionPane.showMessageDialog(this, "Sửa thành công.");
+            fillTable();
+        } else {
+            JOptionPane.showMessageDialog(this, "Sửa thất bại.");
+        }
+    }
     }//GEN-LAST:event_btnSuaCTHDActionPerformed
 
 
