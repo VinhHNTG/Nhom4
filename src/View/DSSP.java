@@ -130,7 +130,7 @@ public class DSSP extends javax.swing.JPanel {
 
         jLabel4.setText("Số lượng");
 
-        jLabel33.setText("Giá:30,00");
+        jLabel33.setText("Giá:30,000");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -187,7 +187,7 @@ public class DSSP extends javax.swing.JPanel {
 
         jLabel7.setText("Số lượng");
 
-        jLabel29.setText("Giá:30,00");
+        jLabel29.setText("Giá:30,000");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -241,7 +241,7 @@ public class DSSP extends javax.swing.JPanel {
 
         jLabel10.setText("Số lượng");
 
-        jLabel34.setText("Giá:30,00");
+        jLabel34.setText("Giá:30,000");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -295,7 +295,7 @@ public class DSSP extends javax.swing.JPanel {
 
         jLabel13.setText("Số lượng");
 
-        jLabel30.setText("Giá:30,00");
+        jLabel30.setText("Giá:30,000");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -349,7 +349,7 @@ public class DSSP extends javax.swing.JPanel {
 
         jLabel16.setText("Số lượng");
 
-        jLabel35.setText("Giá:30,00");
+        jLabel35.setText("Giá:30,000");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -403,7 +403,7 @@ public class DSSP extends javax.swing.JPanel {
 
         jLabel19.setText("Số lượng");
 
-        jLabel31.setText("Giá:30,00");
+        jLabel31.setText("Giá:30,000");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -460,7 +460,7 @@ public class DSSP extends javax.swing.JPanel {
 
         jLabel22.setText("Số lượng");
 
-        jLabel36.setText("Giá:30,00");
+        jLabel36.setText("Giá:30,000");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -519,7 +519,7 @@ public class DSSP extends javax.swing.JPanel {
 
         jLabel25.setText("Số lượng");
 
-        jLabel32.setText("Giá:30,00");
+        jLabel32.setText("Giá:30,000");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);

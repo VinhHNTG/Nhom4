@@ -4,6 +4,11 @@
  */
 package View;
 
+import Dao.HDCTDao;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.ChiTietHoaDon;
+
 /**
  *
  * @author ACER
@@ -13,10 +18,73 @@ public class QLHDCT extends javax.swing.JPanel {
     /**
      * Creates new form QLHDCT
      */
+    DefaultTableModel tableModel;
+    HDCTDao hdctDao = new HDCTDao();
+    int index = -1;
+
     public QLHDCT() {
         initComponents();
     }
 
+    public void initTable() {
+        String[] cols = new String[]{"Mã CTHD", "Mã SP", "Số lượng", "Ghi chú", "Đơn giá", "Trạng thái"};
+        tableModel = new DefaultTableModel();
+        tableModel.setColumnIdentifiers(cols);
+        TBHDCT.setModel(tableModel);
+    }
+
+    public void fillTable() {
+        tableModel.setRowCount(0);
+        for (ChiTietHoaDon cthd : hdctDao.getAll()) {
+            tableModel.addRow(hdctDao.getRow(cthd));
+        }
+    }
+
+    private boolean validateForm() {
+        if (txtMaCTHD.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập mã chi tiết hóa đơn.");
+            return false;
+        }
+        if (txtmaHD.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập mã hóa đơn.");
+            return false;
+        }
+        if (txtMaSP.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập mã sản phẩm.");
+            return false;
+        }
+        if (txtDonGia.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập đơn giá.");
+            return false;
+        }
+        try {
+            double gia = Double.parseDouble(txtDonGia.getText().trim());
+            if (gia <= 0) {
+                JOptionPane.showMessageDialog(this, "Giá tiền phải lớn hơn 0.");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Giá tiền phải là số hợp lệ.");
+            return false;
+        }
+        if (!rdoThanhToan.isSelected() && !rdoChuaThanhToan.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn trạng thái.");
+            return false;
+        }
+        return true;
+    }
+
+    private ChiTietHoaDon getForm() {
+        int maCTHD = Integer.parseInt(txtMaCTHD.getText().trim());
+        int maHD = Integer.parseInt(txtmaHD.getText().trim());
+        int maSP = Integer.parseInt(txtMaSP.getText().trim());
+        double donGia = Double.parseDouble(txtDonGia.getText().trim());
+        String trangThai = rdoThanhToan.isSelected() ? "Đã thanh toán" : "Chưa thanh toán";
+
+        return new ChiTietHoaDon(maCTHD, maHD, maSP, donGia, trangThai);
+    }
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,6 +114,9 @@ public class QLHDCT extends javax.swing.JPanel {
         btnThemCTHD = new javax.swing.JButton();
         btnXóaCTHD = new javax.swing.JButton();
         btnSuaCTHD = new javax.swing.JButton();
+        jpanel4 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        TBHDCT = new javax.swing.JTable();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -195,20 +266,55 @@ public class QLHDCT extends javax.swing.JPanel {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
+        jpanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Bảng chi tiết hóa đơn"));
+
+        TBHDCT.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(TBHDCT);
+
+        javax.swing.GroupLayout jpanel4Layout = new javax.swing.GroupLayout(jpanel4);
+        jpanel4.setLayout(jpanel4Layout);
+        jpanel4Layout.setHorizontalGroup(
+            jpanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpanel4Layout.createSequentialGroup()
+                .addComponent(jScrollPane3)
+                .addContainerGap())
+        );
+        jpanel4Layout.setVerticalGroup(
+            jpanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(33, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(217, 217, 217))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 27, Short.MAX_VALUE))
+                    .addComponent(jpanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,25 +325,59 @@ public class QLHDCT extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(jpanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(169, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemCTHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemCTHDActionPerformed
         // TODO add your handling code here:
+         if (validateForm()) {
+        ChiTietHoaDon cthd = getForm();
+        if (hdctDao.addHDCT(cthd) > 0) {
+            JOptionPane.showMessageDialog(this, "Thêm thành công.");
+            fillTable();
+        } else {
+            JOptionPane.showMessageDialog(this, "Thêm thất bại.");
+        }
+    }
     }//GEN-LAST:event_btnThemCTHDActionPerformed
 
     private void btnXóaCTHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXóaCTHDActionPerformed
         // TODO add your handling code here:
+         int confirm = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa?", "Xác nhận", JOptionPane.YES_NO_OPTION);
+    if (confirm == JOptionPane.YES_OPTION) {
+        int maCTHD = Integer.parseInt(txtMaCTHD.getText().trim());
+        ChiTietHoaDon cthd = new ChiTietHoaDon();
+        cthd.setMaCTHD(maCTHD);
+        
+        if (hdctDao.deleteHDCT(cthd) > 0) {
+            JOptionPane.showMessageDialog(this, "Xóa thành công.");
+            fillTable();
+        } else {
+            JOptionPane.showMessageDialog(this, "Xóa thất bại.");
+        }
+    }
     }//GEN-LAST:event_btnXóaCTHDActionPerformed
 
     private void btnSuaCTHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaCTHDActionPerformed
         // TODO add your handling code here:
+          if (validateForm()) {
+        ChiTietHoaDon cthd = getForm();
+        if (hdctDao.editHDCT(cthd) > 0) {
+            JOptionPane.showMessageDialog(this, "Sửa thành công.");
+            fillTable();
+        } else {
+            JOptionPane.showMessageDialog(this, "Sửa thất bại.");
+        }
+    }
     }//GEN-LAST:event_btnSuaCTHDActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup BTNTRANGTHAI;
+    private javax.swing.JTable TBHDCT;
     private javax.swing.JButton btnSuaCTHD;
     private javax.swing.JButton btnThemCTHD;
     private javax.swing.JButton btnXóaCTHD;
@@ -250,7 +390,9 @@ public class QLHDCT extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JPanel jpanel4;
     private javax.swing.JRadioButton rdoChuaThanhToan;
     private javax.swing.JRadioButton rdoThanhToan;
     private javax.swing.JTextField txtDonGia;
