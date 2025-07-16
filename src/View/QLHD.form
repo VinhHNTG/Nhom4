@@ -141,7 +141,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtMaHD4" max="32767" attributes="0"/>
+                          <Component id="txtMaKH" max="32767" attributes="0"/>
                           <Component id="txtSoluong" max="32767" attributes="0"/>
                           <Component id="txtTongTien" max="32767" attributes="0"/>
                           <Component id="txtNgayDat" max="32767" attributes="0"/>
@@ -194,7 +194,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtMaHD4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtMaKH" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -264,7 +264,7 @@
                 <Property name="text" type="java.lang.String" value="M&#xe3; kh&#xe1;ch h&#xe0;ng:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtMaHD4">
+            <Component class="javax.swing.JTextField" name="txtMaKH">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
               <Properties>

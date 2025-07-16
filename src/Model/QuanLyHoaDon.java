@@ -18,9 +18,6 @@ public class QuanLyHoaDon {
     private String maKH;      // Mã khách hàng (FK)
     private String trangThai; 
 
-    public QuanLyHoaDon() {
-    }
-
     public QuanLyHoaDon(String maHD, String maNV, String ngayDat, double tongTien, int soLuong, String size, String maKH, String trangThai) {
         this.maHD = maHD;
         this.maNV = maNV;
