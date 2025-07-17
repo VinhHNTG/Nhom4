@@ -4,18 +4,35 @@
  */
 package View;
 
+import javax.swing.table.DefaultTableModel;
+import model.QuanLyHoaDonCT;
+
 /**
  *
  * @author ACER
  */
 public class BanHang extends javax.swing.JPanel {
-
+    DefaultTableModel tableModel= new  DefaultTableModel();
     /**
      * Creates new form BanHang
      */
     public BanHang() {
         initComponents();
     }
+    
+    public void initTableSP() {
+        String[] cols = new String[]{"Mã Sản Phẩm", "Tên Sản Phẩm", "Giá Tiền", "Trạng thái"};
+        tableModel = new DefaultTableModel();
+        tableModel.setColumnIdentifiers(cols);
+        tblSP.setModel(tableModel);
+    }
+
+//    public void fillTableSP() {
+//        tableModel.setRowCount(0);
+//        for (QuanLyHoaDonCT cthd : hdctDao.getAll()) {
+//            tableModel.addRow(hdctDao.getRow(cthd));
+//        }
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.

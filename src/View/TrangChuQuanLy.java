@@ -36,6 +36,7 @@ public class TrangChuQuanLy extends javax.swing.JFrame {
         btnQLSP = new javax.swing.JButton();
         btnThongKe = new javax.swing.JButton();
         btnDangXuat = new javax.swing.JButton();
+        btnhdct = new javax.swing.JButton();
         jPanelCN = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -86,6 +87,13 @@ public class TrangChuQuanLy extends javax.swing.JFrame {
 
         btnDangXuat.setText("Đăng Xuất");
 
+        btnhdct.setText("Quản Lý CTHD");
+        btnhdct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnhdctActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelChonChucNangLayout = new javax.swing.GroupLayout(PanelChonChucNang);
         PanelChonChucNang.setLayout(PanelChonChucNangLayout);
         PanelChonChucNangLayout.setHorizontalGroup(
@@ -99,7 +107,8 @@ public class TrangChuQuanLy extends javax.swing.JFrame {
                     .addComponent(btnKH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnQLSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnDangXuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnDangXuat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnhdct, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         PanelChonChucNangLayout.setVerticalGroup(
@@ -117,7 +126,9 @@ public class TrangChuQuanLy extends javax.swing.JFrame {
                 .addComponent(btnQLSP, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnhdct, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(btnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -185,14 +196,14 @@ public class TrangChuQuanLy extends javax.swing.JFrame {
 
     private void btnQLHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLHDActionPerformed
         // TODO add your handling code here:
-              QLHD p2 = new QLHD(); // Không cần setSize và setLocation
-        p2 .setSize(487, 446);
-        p2.setLocation(0,0);
-        jPanelCN.removeAll();
-        jPanelCN.setLayout(new BorderLayout()); // Bố trí tự co giãn theo khu vực
-        jPanelCN.add(p2, BorderLayout.CENTER);  // p1 sẽ lấp đầy vùng trung tâm
-        jPanelCN.revalidate();
-        jPanelCN.repaint();
+//              QLHD p2 = new QLHD(); // Không cần setSize và setLocation
+//        p2 .setSize(487, 446);
+//        p2.setLocation(0,0);
+//        jPanelCN.removeAll();
+//        jPanelCN.setLayout(new BorderLayout()); // Bố trí tự co giãn theo khu vực
+//        jPanelCN.add(p2, BorderLayout.CENTER);  // p1 sẽ lấp đầy vùng trung tâm
+//        jPanelCN.revalidate();
+//        jPanelCN.repaint();
     }//GEN-LAST:event_btnQLHDActionPerformed
 
     private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
@@ -230,6 +241,18 @@ public class TrangChuQuanLy extends javax.swing.JFrame {
         jPanelCN.revalidate();
         jPanelCN.repaint();
     }//GEN-LAST:event_btnQLKMActionPerformed
+
+    private void btnhdctActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnhdctActionPerformed
+        // TODO add your handling code here:
+                       QLHDCT p2 = new QLHDCT(); // Không cần setSize và setLocation
+        p2 .setSize(683, 543);
+        p2.setLocation(0,0);
+        jPanelCN.removeAll();
+        jPanelCN.setLayout(new BorderLayout()); // Bố trí tự co giãn theo khu vực
+        jPanelCN.add(p2, BorderLayout.CENTER);  // p1 sẽ lấp đầy vùng trung tâm
+        jPanelCN.revalidate();
+        jPanelCN.repaint();
+    }//GEN-LAST:event_btnhdctActionPerformed
 
     /**
      * @param args the command line arguments
@@ -275,6 +298,7 @@ public class TrangChuQuanLy extends javax.swing.JFrame {
     private javax.swing.JButton btnQLNV;
     private javax.swing.JButton btnQLSP;
     private javax.swing.JButton btnThongKe;
+    private javax.swing.JButton btnhdct;
     private javax.swing.JPanel jPanelCN;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,6 +4,7 @@
  */
 package Dao;
 
+import Model.QuanLyHoaDon;
 import Model.QuanLySanPham;
 import Service.DBconnect;
 import Service.DBconnect;
@@ -19,9 +20,10 @@ import java.util.Date;
  * @author ADMIN
  */
 public class BanHangDao {
-    public List<QuanLySanPham> getAll() {
+
+    public List<QuanLySanPham> getAllSP() {
         List<QuanLySanPham> listSP = new ArrayList<>();
-        String sql = "SELECT * FROM KhachHang";
+        String sql = "SELECT * FROM SANPHAM";
         try {
             Connection con = DBconnect.getConnection();
             Statement stm = con.createStatement();
@@ -32,11 +34,20 @@ public class BanHangDao {
                 double giaTien = rs.getDouble(3);
                 Date ngayDatHang = rs.getDate(4);
 
-               QuanLySanPham SP = new QuanLySanPham(maSP, tenSP, giaTien, ngayDatHang);
+                QuanLySanPham SP = new QuanLySanPham(maSP, tenSP, giaTien, ngayDatHang);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return listSP;
     }
+
+    public Object[] getRowSP(QuanLySanPham SP) {
+        String maSP = SP.getMaSP();       // Mã sản phẩm (PK)
+        String tenSP = SP.getTenSP();      // Tên sản phẩm
+        double giaTien = SP.getGiaTien();    // Giá tiền
+        Date ngayDatHang = SP.getNgayDatHang();
+        return new Object[]{maSP,tenSP,giaTien,ngayDatHang};
+    }
+
 }

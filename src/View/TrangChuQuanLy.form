@@ -68,6 +68,7 @@
                       <Component id="btnQLSP" max="32767" attributes="0"/>
                       <Component id="btnThongKe" max="32767" attributes="0"/>
                       <Component id="btnDangXuat" max="32767" attributes="0"/>
+                      <Component id="btnhdct" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -88,7 +89,9 @@
                   <Component id="btnQLSP" min="-2" pref="52" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="btnThongKe" min="-2" pref="52" max="-2" attributes="0"/>
-                  <EmptySpace pref="94" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="btnhdct" min="-2" pref="52" max="-2" attributes="0"/>
+                  <EmptySpace pref="36" max="32767" attributes="0"/>
                   <Component id="btnDangXuat" min="-2" pref="52" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -147,6 +150,14 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng Xu&#x1ea5;t"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnhdct">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; CTHD"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnhdctActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

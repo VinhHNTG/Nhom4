@@ -4,7 +4,7 @@
  */
 package View;
 
-import DAO.QLHDDAO;
+import Dao.QLHDDAO;
 import Model.QuanLyHoaDon;
 import java.sql.Date;
 import java.time.LocalDate;
