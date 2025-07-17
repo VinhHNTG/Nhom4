@@ -4,6 +4,8 @@
  */
 package Model;
 
+import java.util.Date;
+
 /**
  *
  * @author ADMIN
@@ -12,12 +14,12 @@ public class QuanLySanPham {
        private String maSP;       // Mã sản phẩm (PK)
     private String tenSP;      // Tên sản phẩm
     private double giaTien;    // Giá tiền
-    private String ngayDatHang; 
+    private Date ngayDatHang; 
 
     public QuanLySanPham() {
     }
 
-    public QuanLySanPham(String maSP, String tenSP, double giaTien, String ngayDatHang) {
+    public QuanLySanPham(String maSP, String tenSP, double giaTien, Date ngayDatHang) {
         this.maSP = maSP;
         this.tenSP = tenSP;
         this.giaTien = giaTien;
@@ -48,13 +50,13 @@ public class QuanLySanPham {
         this.giaTien = giaTien;
     }
 
-    public String getNgayDatHang() {
+    public Date getNgayDatHang() {
         return ngayDatHang;
     }
 
-    public void setNgayDatHang(String ngayDatHang) {
+    public void setNgayDatHang(Date ngayDatHang) {
         this.ngayDatHang = ngayDatHang;
     }
-    
+
     
 }

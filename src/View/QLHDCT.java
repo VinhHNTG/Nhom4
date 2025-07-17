@@ -7,7 +7,7 @@ package View;
 import Dao.HDCTDao;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.ChiTietHoaDon;
+import model.QuanLyHoaDonCT;
 
 /**
  *
@@ -27,7 +27,7 @@ public class QLHDCT extends javax.swing.JPanel {
     }
 
     public void initTable() {
-        String[] cols = new String[]{"Mã CTHD", "Mã SP", "Số lượng", "Ghi chú", "Đơn giá", "Trạng thái"};
+        String[] cols = new String[]{"Mã CTHD", "Mã SP", "Đơn giá", "Trạng thái"};
         tableModel = new DefaultTableModel();
         tableModel.setColumnIdentifiers(cols);
         TBHDCT.setModel(tableModel);
@@ -35,7 +35,7 @@ public class QLHDCT extends javax.swing.JPanel {
 
     public void fillTable() {
         tableModel.setRowCount(0);
-        for (ChiTietHoaDon cthd : hdctDao.getAll()) {
+        for (QuanLyHoaDonCT cthd : hdctDao.getAll()) {
             tableModel.addRow(hdctDao.getRow(cthd));
         }
     }
@@ -74,14 +74,14 @@ public class QLHDCT extends javax.swing.JPanel {
         return true;
     }
 
-    private ChiTietHoaDon getForm() {
+    private QuanLyHoaDonCT getForm() {
         int maCTHD = Integer.parseInt(txtMaCTHD.getText().trim());
         int maHD = Integer.parseInt(txtmaHD.getText().trim());
         int maSP = Integer.parseInt(txtMaSP.getText().trim());
         double donGia = Double.parseDouble(txtDonGia.getText().trim());
         String trangThai = rdoThanhToan.isSelected() ? "Đã thanh toán" : "Chưa thanh toán";
 
-        return new ChiTietHoaDon(maCTHD, maHD, maSP, donGia, trangThai);
+        return new QuanLyHoaDonCT(maCTHD, maHD, maSP, donGia, trangThai);
     }
 
     
@@ -334,7 +334,7 @@ public class QLHDCT extends javax.swing.JPanel {
     private void btnThemCTHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemCTHDActionPerformed
         // TODO add your handling code here:
          if (validateForm()) {
-        ChiTietHoaDon cthd = getForm();
+        QuanLyHoaDonCT cthd = getForm();
         if (hdctDao.addHDCT(cthd) > 0) {
             JOptionPane.showMessageDialog(this, "Thêm thành công.");
             fillTable();
@@ -349,7 +349,7 @@ public class QLHDCT extends javax.swing.JPanel {
          int confirm = JOptionPane.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa?", "Xác nhận", JOptionPane.YES_NO_OPTION);
     if (confirm == JOptionPane.YES_OPTION) {
         int maCTHD = Integer.parseInt(txtMaCTHD.getText().trim());
-        ChiTietHoaDon cthd = new ChiTietHoaDon();
+        QuanLyHoaDonCT cthd = new QuanLyHoaDonCT();
         cthd.setMaCTHD(maCTHD);
         
         if (hdctDao.deleteHDCT(cthd) > 0) {
@@ -364,7 +364,7 @@ public class QLHDCT extends javax.swing.JPanel {
     private void btnSuaCTHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaCTHDActionPerformed
         // TODO add your handling code here:
           if (validateForm()) {
-        ChiTietHoaDon cthd = getForm();
+        QuanLyHoaDonCT cthd = getForm();
         if (hdctDao.editHDCT(cthd) > 0) {
             JOptionPane.showMessageDialog(this, "Sửa thành công.");
             fillTable();

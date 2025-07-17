@@ -4,14 +4,14 @@
  */
 package Dao;
 
-import Service.DBConnect;
+import Service.DBconnect;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import model.ChiTietHoaDon;
+import model.QuanLyHoaDonCT;
 import java.sql.PreparedStatement;
 
 /**
@@ -20,23 +20,21 @@ import java.sql.PreparedStatement;
  */
 public class HDCTDao {
 
-    public List<ChiTietHoaDon> getAll() {
-        List<ChiTietHoaDon> list = new ArrayList<>();
+    public List<QuanLyHoaDonCT> getAll() {
+        List<QuanLyHoaDonCT> list = new ArrayList<>();
         String sql = "select * from ChiTietHoaDon";
         try {
-            Connection con = DBConnect.getConnection();
+            Connection con = DBconnect.getConnection();
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(sql);
             while (rs.next()) {
                 int maCTHD = rs.getInt(1);
                 int maHD = rs.getInt(2);
                 int maSP = rs.getInt(3);
-                int sl = rs.getInt(4);
-                String ghichu = rs.getString(5);
-                double donGia = rs.getDouble(6);
-                String trangThai = rs.getString(7);
+                double donGia = rs.getDouble(4);
+                String trangThai = rs.getString(5);
 
-                ChiTietHoaDon hd = new ChiTietHoaDon( maCTHD, maHD, maSP, sl, ghichu, donGia, trangThai);
+                QuanLyHoaDonCT hd = new QuanLyHoaDonCT(maCTHD, maHD, maSP, donGia, trangThai);
                 list.add(hd);
             }
         } catch (SQLException e) {
@@ -45,29 +43,26 @@ public class HDCTDao {
         return list;
     }
     
-    public Object[] getRow(ChiTietHoaDon hd) {
+    public Object[] getRow(QuanLyHoaDonCT hd) {
         int maHDCT = hd.getMaCTHD();
                 int maHD = hd.getMaHD();
                 int maSP = hd.getMaSP();
-                String ghichu = hd.getGhichu();
                 double dongia = hd.getDonGia();
                 String trangthai = hd.getTrangThai();
 
-        return new Object[]{maHDCT, maHD, maSP, ghichu, dongia,trangthai};
+        return new Object[]{maHDCT, maHD, maSP,dongia,trangthai};
     }
     
-    public int addHDCT(ChiTietHoaDon hdct) {
-        String sql = "insert into ChiTietHoaDon(MaCTHD, MaHD, MaSP, Sl, GhiChu, DonGia, TrangThai) values (?, ?, ?, ?, ?, ?, ?)";
+    public int addHDCT(QuanLyHoaDonCT hdct) {
+        String sql = "insert into ChiTietHoaDon(MaCTHD, MaHD, MaSP, DonGia, TrangThai) values (?, ?, ?, ?, ?, ?, ?)";
         try {
-            Connection con = DBConnect.getConnection();
+            Connection con = DBconnect.getConnection();
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setInt(1, hdct.getMaCTHD());
             pstm.setInt(2, hdct.getMaHD());
             pstm.setInt(3, hdct.getMaSP());
-            pstm.setInt(4, hdct.getSl());
-            pstm.setString(5, hdct.getGhichu());
-            pstm.setDouble(6, hdct.getDonGia());
-            pstm.setString(7, hdct.getTrangThai());
+            pstm.setDouble(4, hdct.getDonGia());
+            pstm.setString(5, hdct.getTrangThai());
 
             if (pstm.executeUpdate() > 0) {
                 return 1;
@@ -78,18 +73,16 @@ public class HDCTDao {
         return 0;
     }
     
-     public int editHDCT(ChiTietHoaDon hdct) {
-        String sql = "UPDATE ChiTietHoaDon SET  MaHD = ?, MaSP = ?, Sl = ?,  GhiChu = ?, DonGia = ?, TrangThai = ?, WHERE MaCTHD = ?";
+     public int editHDCT(QuanLyHoaDonCT hdct) {
+        String sql = "UPDATE ChiTietHoaDon SET  MaHD = ?, MaSP = ?, DonGia = ?, TrangThai = ?, WHERE MaCTHD = ?";
         try {
-            Connection con = DBConnect.getConnection();
+            Connection con = DBconnect.getConnection();
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setInt(1, hdct.getMaCTHD());
             pstm.setInt(2, hdct.getMaHD());
             pstm.setInt(3, hdct.getMaSP());
-            pstm.setInt(4, hdct.getSl());
-            pstm.setString(5, hdct.getGhichu());
-            pstm.setDouble(6, hdct.getDonGia());
-            pstm.setString(7, hdct.getTrangThai());
+            pstm.setDouble(4, hdct.getDonGia());
+            pstm.setString(5, hdct.getTrangThai());
 
             if (pstm.executeUpdate() > 0) {
                 return 1;
@@ -100,10 +93,10 @@ public class HDCTDao {
         return 0;
     }
 
-     public int deleteHDCT(ChiTietHoaDon cthd) {
+     public int deleteHDCT(QuanLyHoaDonCT cthd) {
         String sql = "delete from ChiTietHoaDon where MaHDCT = ?";
         try {
-            Connection con = DBConnect.getConnection();
+            Connection con = DBconnect.getConnection();
             PreparedStatement pstm = con.prepareStatement(sql);
             pstm.setInt(1, cthd.getMaCTHD());
 
