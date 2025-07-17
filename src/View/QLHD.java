@@ -4,7 +4,7 @@
  */
 package View;
 
-import DAO.QLHDDAO;
+//import DAO.QLHDDAO;
 import Model.QuanLyHoaDon;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -19,181 +19,181 @@ import javax.swing.table.DefaultTableModel;
  */
 public class QLHD extends javax.swing.JPanel {
 
-    DefaultTableModel tableModel;
-    QLHDDAO hdDao = new QLHDDAO();
-
-    /**
-     * Creates new form QLHD
-     */
-    public QLHD() {
-        initComponents();
-        fillTable();
-        initTable();
-    }
-
-    public void initTable() {
-        String[] cols = new String[]{"Mã HĐ", "Mã NV", "Ngày đặt", "Tổng Tiền", "Số lượng", "Size", "Mã KH", "Trạng Thái"};
-        tableModel = new DefaultTableModel();
-        tableModel.setColumnIdentifiers(cols);
-        jTable3.setModel(tableModel);
-    }
-
-    public void fillTable() {
-        tableModel.setRowCount(0);
-        for (QuanLyHoaDon hd : hdDao.getAll()) {
-            tableModel.addRow(hdDao.getRow(hd));
-        }
-    }
-
-    private boolean validateForm() {
-        if (txtMaHD.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập mã hóa đơn.");
-            return false;
-        }
-        if (txtmaNV.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập mã nhân viên.");
-            return false;
-        }
-        if (txtNgayDat.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập ngày đặt.");
-            return false;
-        }
-        try {
-            // Định dạng ngày nhập vào
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            LocalDate ngayDat = LocalDate.parse(txtNgayDat.getText().trim(), formatter);
-            LocalDate today = LocalDate.now();
-            LocalDate oneYearAgo = today.minusYears(1);
-
-            if (ngayDat.isAfter(today)) {
-                JOptionPane.showMessageDialog(this, "Ngày đặt không được là ngày trong tương lai.");
-                return false;
-            }
-
-            if (ngayDat.isBefore(oneYearAgo)) {
-                JOptionPane.showMessageDialog(this, "Ngày đặt không được quá 1 năm trước.");
-                return false;
-            }
-
-        } catch (DateTimeParseException e) {
-            JOptionPane.showMessageDialog(this, "Ngày đặt không đúng định dạng. Định dạng đúng: yyyy-MM-dd");
-            return false;
-        }
-        if (txtTongTien.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập giá tiền.");
-            return false;
-        }
-        try {
-            double gia = Double.parseDouble(txtTongTien.getText().trim());
-            if (gia <= 0) {
-                JOptionPane.showMessageDialog(this, "Giá tiền phải lớn hơn 0.");
-                return false;
-            }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Giá tiền phải là số hợp lệ.");
-            return false;
-        }
-        if (txtSoluong.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập số lượng.");
-            return false;
-        }
-        try {
-            int soluong = Integer.parseInt(txtSoluong.getText().trim());
-            if (soluong <= 0) {
-                JOptionPane.showMessageDialog(this, "số lượng phải lớn hơn 0.");
-                return false;
-            }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Số lượng phải là số hợp lệ.");
-            return false;
-        }
-        if (txtMaKH.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập mã khách hàng.");
-            return false;
-        }
-        if (!rboChuaThanhToan.isSelected() && !rboDaThanhToan.isSelected()) {
-            JOptionPane.showMessageDialog(this, "Vui lòng chọn trạng thái");
-            return true;
-        }
-        return true;
-    }
-
-    public void add() {
-        String maHD = txtMaHD.getText();
-        String maNV = txtmaNV.getText();
-        String ngayDat = txtNgayDat.getText();
-        double tongTien = Double.parseDouble(txtTongTien.getText());
-        int soLuong = Integer.parseInt(txtSoluong.getText());
-        String size = (String) CBBSize.getSelectedItem();
-        String maKH = txtMaKH.getText();
-        String trangThai = null;
-        if (rboChuaThanhToan.isSelected()) {
-            trangThai = "Đã Thanh Toán";
-        } else if (rboChuaThanhToan.isSelected()) {
-            trangThai = "Chưa Thanh Toán";
-        }
-        QuanLyHoaDon hd = new QuanLyHoaDon(maHD, maNV, ngayDat, tongTien, soLuong, size, maKH, trangThai);
-        if (hdDao.addHD(hd) == 1) {
-            fillTable();
-            JOptionPane.showMessageDialog(this, "Nhap thanh cong");
-        } else {
-            JOptionPane.showMessageDialog(this, "Loi!");
-        }
-
-    }
-
-    public void Update() {
-        int i = jTable3.getSelectedRow();
-        if (i != -1) {
-            String maHD = txtMaHD.getText();
-            String maNV = txtmaNV.getText();
-            String ngayDat = txtNgayDat.getText();
-            double tongTien = Double.parseDouble(txtTongTien.getText());
-            int soLuong = Integer.parseInt(txtSoluong.getText());
-            String size = (String) CBBSize.getSelectedItem();
-            String maKH = txtMaKH.getText();
-            String trangThai = null;
-            if (rboChuaThanhToan.isSelected()) {
-                trangThai = "Đã Thanh Toán";
-            } else if (rboChuaThanhToan.isSelected()) {
-                trangThai = "Chưa Thanh Toán";
-            }
-            QuanLyHoaDon hd = new QuanLyHoaDon(maHD, maNV, ngayDat, tongTien, soLuong, size, maKH, trangThai);
-
-            if (hdDao.editHD(hd) == 1) {
-                JOptionPane.showMessageDialog(this, "Sửa dữ liệu thành công");
-                fillTable();
-            } else {
-                JOptionPane.showMessageDialog(this, "Sửa dữ liệu thất bại");
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "Vui long chon 1 hang de sua");
-        }
-    }
-
-    public void deleteHD() {
-        String maHD = txtMaHD.getText();
-        String maNV = txtmaNV.getText();
-        String ngayDat = txtNgayDat.getText();
-        double tongTien = Double.parseDouble(txtTongTien.getText());
-        int soLuong = Integer.parseInt(txtSoluong.getText());
-        String size = (String) CBBSize.getSelectedItem();
-        String maKH = txtMaKH.getText();
-        String trangThai = null;
-        if (rboChuaThanhToan.isSelected()) {
-            trangThai = "Đã Thanh Toán";
-        } else if (rboChuaThanhToan.isSelected()) {
-            trangThai = "Chưa Thanh Toán";
-        }
-        QuanLyHoaDon hd = new QuanLyHoaDon(maHD, maNV, ngayDat, tongTien, soLuong, size, maKH, trangThai);
-
-        if (hdDao.deleteHD(hd) == 1) {
-            fillTable();
-            JOptionPane.showMessageDialog(this, "Xóa sản phẩm mới thành công!");
-        } else {
-            JOptionPane.showMessageDialog(this, "Có lỗi xảy ra!");
-        }
-    }
+//    DefaultTableModel tableModel;
+//    QLHDDAO hdDao = new QLHDDAO();
+//
+//    /**
+//     * Creates new form QLHD
+//     */
+//    public QLHD() {
+//        initComponents();
+//        fillTable();
+//        initTable();
+//    }
+//
+//    public void initTable() {
+//        String[] cols = new String[]{"Mã HĐ", "Mã NV", "Ngày đặt", "Tổng Tiền", "Số lượng", "Size", "Mã KH", "Trạng Thái"};
+//        tableModel = new DefaultTableModel();
+//        tableModel.setColumnIdentifiers(cols);
+//        jTable3.setModel(tableModel);
+//    }
+//
+//    public void fillTable() {
+//        tableModel.setRowCount(0);
+//        for (QuanLyHoaDon hd : hdDao.getAll()) {
+//            tableModel.addRow(hdDao.getRow(hd));
+//        }
+//    }
+//
+//    private boolean validateForm() {
+//        if (txtMaHD.getText().trim().isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Vui lòng nhập mã hóa đơn.");
+//            return false;
+//        }
+//        if (txtmaNV.getText().trim().isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Vui lòng nhập mã nhân viên.");
+//            return false;
+//        }
+//        if (txtNgayDat.getText().trim().isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Vui lòng nhập ngày đặt.");
+//            return false;
+//        }
+//        try {
+//            // Định dạng ngày nhập vào
+//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//            LocalDate ngayDat = LocalDate.parse(txtNgayDat.getText().trim(), formatter);
+//            LocalDate today = LocalDate.now();
+//            LocalDate oneYearAgo = today.minusYears(1);
+//
+//            if (ngayDat.isAfter(today)) {
+//                JOptionPane.showMessageDialog(this, "Ngày đặt không được là ngày trong tương lai.");
+//                return false;
+//            }
+//
+//            if (ngayDat.isBefore(oneYearAgo)) {
+//                JOptionPane.showMessageDialog(this, "Ngày đặt không được quá 1 năm trước.");
+//                return false;
+//            }
+//
+//        } catch (DateTimeParseException e) {
+//            JOptionPane.showMessageDialog(this, "Ngày đặt không đúng định dạng. Định dạng đúng: yyyy-MM-dd");
+//            return false;
+//        }
+//        if (txtTongTien.getText().trim().isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Vui lòng nhập giá tiền.");
+//            return false;
+//        }
+//        try {
+//            double gia = Double.parseDouble(txtTongTien.getText().trim());
+//            if (gia <= 0) {
+//                JOptionPane.showMessageDialog(this, "Giá tiền phải lớn hơn 0.");
+//                return false;
+//            }
+//        } catch (NumberFormatException e) {
+//            JOptionPane.showMessageDialog(this, "Giá tiền phải là số hợp lệ.");
+//            return false;
+//        }
+//        if (txtSoluong.getText().trim().isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Vui lòng nhập số lượng.");
+//            return false;
+//        }
+//        try {
+//            int soluong = Integer.parseInt(txtSoluong.getText().trim());
+//            if (soluong <= 0) {
+//                JOptionPane.showMessageDialog(this, "số lượng phải lớn hơn 0.");
+//                return false;
+//            }
+//        } catch (NumberFormatException e) {
+//            JOptionPane.showMessageDialog(this, "Số lượng phải là số hợp lệ.");
+//            return false;
+//        }
+//        if (txtMaKH.getText().trim().isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Vui lòng nhập mã khách hàng.");
+//            return false;
+//        }
+//        if (!rboChuaThanhToan.isSelected() && !rboDaThanhToan.isSelected()) {
+//            JOptionPane.showMessageDialog(this, "Vui lòng chọn trạng thái");
+//            return true;
+//        }
+//        return true;
+//    }
+//
+//    public void add() {
+//        String maHD = txtMaHD.getText();
+//        String maNV = txtmaNV.getText();
+//        String ngayDat = txtNgayDat.getText();
+//        double tongTien = Double.parseDouble(txtTongTien.getText());
+//        int soLuong = Integer.parseInt(txtSoluong.getText());
+//        String size = (String) CBBSize.getSelectedItem();
+//        String maKH = txtMaKH.getText();
+//        String trangThai = null;
+//        if (rboChuaThanhToan.isSelected()) {
+//            trangThai = "Đã Thanh Toán";
+//        } else if (rboChuaThanhToan.isSelected()) {
+//            trangThai = "Chưa Thanh Toán";
+//        }
+//        QuanLyHoaDon hd = new QuanLyHoaDon(maHD, maNV, ngayDat, tongTien, soLuong, size, maKH, trangThai);
+//        if (hdDao.addHD(hd) == 1) {
+//            fillTable();
+//            JOptionPane.showMessageDialog(this, "Nhap thanh cong");
+//        } else {
+//            JOptionPane.showMessageDialog(this, "Loi!");
+//        }
+//
+//    }
+//
+//    public void Update() {
+//        int i = jTable3.getSelectedRow();
+//        if (i != -1) {
+//            String maHD = txtMaHD.getText();
+//            String maNV = txtmaNV.getText();
+//            String ngayDat = txtNgayDat.getText();
+//            double tongTien = Double.parseDouble(txtTongTien.getText());
+//            int soLuong = Integer.parseInt(txtSoluong.getText());
+//            String size = (String) CBBSize.getSelectedItem();
+//            String maKH = txtMaKH.getText();
+//            String trangThai = null;
+//            if (rboChuaThanhToan.isSelected()) {
+//                trangThai = "Đã Thanh Toán";
+//            } else if (rboChuaThanhToan.isSelected()) {
+//                trangThai = "Chưa Thanh Toán";
+//            }
+//            QuanLyHoaDon hd = new QuanLyHoaDon(maHD, maNV, ngayDat, tongTien, soLuong, size, maKH, trangThai);
+//
+//            if (hdDao.editHD(hd) == 1) {
+//                JOptionPane.showMessageDialog(this, "Sửa dữ liệu thành công");
+//                fillTable();
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Sửa dữ liệu thất bại");
+//            }
+//        } else {
+//            JOptionPane.showMessageDialog(this, "Vui long chon 1 hang de sua");
+//        }
+//    }
+//
+//    public void deleteHD() {
+//        String maHD = txtMaHD.getText();
+//        String maNV = txtmaNV.getText();
+//        String ngayDat = txtNgayDat.getText();
+//        double tongTien = Double.parseDouble(txtTongTien.getText());
+//        int soLuong = Integer.parseInt(txtSoluong.getText());
+//        String size = (String) CBBSize.getSelectedItem();
+//        String maKH = txtMaKH.getText();
+//        String trangThai = null;
+//        if (rboChuaThanhToan.isSelected()) {
+//            trangThai = "Đã Thanh Toán";
+//        } else if (rboChuaThanhToan.isSelected()) {
+//            trangThai = "Chưa Thanh Toán";
+//        }
+//        QuanLyHoaDon hd = new QuanLyHoaDon(maHD, maNV, ngayDat, tongTien, soLuong, size, maKH, trangThai);
+//
+//        if (hdDao.deleteHD(hd) == 1) {
+//            fillTable();
+//            JOptionPane.showMessageDialog(this, "Xóa sản phẩm mới thành công!");
+//        } else {
+//            JOptionPane.showMessageDialog(this, "Có lỗi xảy ra!");
+//        }
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
